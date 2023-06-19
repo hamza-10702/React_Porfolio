@@ -6,17 +6,29 @@
 import Firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyB9pWsI9muxMf6i6s-w47Os-amW3FT61vI",
-    authDomain: "new-profile-aeacc.firebaseapp.com",
-    databaseURL: "https://new-profile-aeacc-default-rtdb.firebaseio.com",
-    projectId: "new-profile-aeacc",
-    storageBucket: "new-profile-aeacc.appspot.com",
-    messagingSenderId: "1062863791442",
-    appId: "1:1062863791442:web:6b661e1d8cad220a68868b",
-    measurementId: "G-YSYKE18KJ5"
-  };
-  
+  apiKey: "AIzaSyCUPGg1wGpeD-ojeiwJcFTWRBs0HOEdGiI",
+  authDomain: "hamza-portfolio-b34be.firebaseapp.com",
+  databaseURL: "https://hamza-portfolio-b34be-default-rtdb.firebaseio.com",
+  projectId: "hamza-portfolio-b34be",
+  storageBucket: "hamza-portfolio-b34be.appspot.com",
+  messagingSenderId: "62579325247",
+  appId: "1:62579325247:web:6c697c8aefa234f19efb8a",
+  measurementId: "G-TRV01F612L",
+};
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCUPGg1wGpeD-ojeiwJcFTWRBs0HOEdGiI",
+//   authDomain: "hamza-portfolio-b34be.firebaseapp.com",
+//   databaseURL: "https://hamza-portfolio-b34be-default-rtdb.firebaseio.com",
+//   projectId: "hamza-portfolio-b34be",
+//   storageBucket: "hamza-portfolio-b34be.appspot.com",
+//   messagingSenderId: "62579325247",
+//   appId: "1:62579325247:web:6c697c8aefa234f19efb8a",
+//   measurementId: "G-TRV01F612L",
+// };
+
 Firebase.initializeApp(firebaseConfig);
 
 export default Firebase;

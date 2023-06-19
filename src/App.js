@@ -6,48 +6,53 @@ import Project from "./components/project/Projects";
 import Resume from "./components/resume/Resume";
 import Footer from "./components/footer/Footer";
 import Contact from "./components/contact/Contact";
-import firebase from "./config/firebase"
-import { getDatabase, ref, onValue} from "firebase/database";
-
+import firebase from "./config/firebase";
+import Loader from "./components/loader";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 function App() {
-
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getDataFromFirebase()
-  }, [])
-
+    getDataFromFirebase();
+  }, []);
 
   const getDataFromFirebase = () => {
-
+    setIsLoading(true);
     const db = getDatabase();
     const starCountRef = ref(db);
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      
-      if(data !== null) {
+      console.log({ data });
+
+      if (data !== null) {
         setData(data);
         console.log(data);
+        setIsLoading(false);
       }
-     
     });
-
-    
-  }
+  };
 
   return (
-    <div className="w-full h-auto bg-bodyColor  text-lightText">
-        <Navbar />
-      <div className="max-w-screen-2xl mx-auto px-16 ">
-        <Banner data = {data?.banner} />
-        <Features data = {data?.features} />
-        <Project data = {data?.project} />
-        <Resume data = {data?.resume} />
-        <Contact data = {data} />
-        <Footer />
-      </div>
-    </div>
+    <React.Fragment>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        // Loader
+        <div className="w-full h-auto bg-bodyColor  text-lightText">
+          <Navbar />
+          <div className="max-w-screen-2xl mx-auto px-16 ">
+            <Banner data={data?.banner} />
+            <Features data={data?.features} />
+            <Project data={data?.project} />
+            <Resume data={data?.resume} />
+            <Contact data={data} />
+            <Footer />
+          </div>
+        </div>
+      )}
+    </React.Fragment>
   );
 }
 
